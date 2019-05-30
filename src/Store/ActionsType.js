@@ -1,4 +1,3 @@
-export const LOADED_DATAS = Symbol()
 export const LOADED_GOAL_DATAS = Symbol()
 export const LOADED_USER_DATAS = Symbol()
 

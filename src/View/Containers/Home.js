@@ -9,9 +9,6 @@ import AddSpend from '../Components/AddSpend.js'
 import AddIncome from '../Components/AddIncome.js'
 import DisplayData from '../Components/DisplayData.js'
 
-
-
-
 class Home extends Component{
   constructor(props) {
     super(props);
@@ -84,9 +81,9 @@ class Home extends Component{
       <div className="Home">
         <MenuBar />
         <GoalPaper
-         openModal={(s) =>{this.handleModalOpen(s)}}
-         goal={this.props.goal}
-         current={this.props.current} />
+          openModal={(s) =>{this.handleModalOpen(s)}}
+          goal={this.props.goal}
+          current={this.props.current} />
         <TodayPaper
           openModal={(s) =>{this.handleModalOpen(s)}}
           today_data={this.props.user_datas[this.props.user_datas.length - 1]} />
@@ -94,14 +91,14 @@ class Home extends Component{
           openModal={(s) =>{this.handleModalOpen(s)}}
           user_datas={this.props.user_datas}/>
         <ChangeGoalValue
-         modal_open={this.state.edit_modal_open}
-         modal_title={this.state.modal_title}
-         modalClose={() => {this.handleModalClose()}}
-         submitGoal={(num) => {this.props.submitGoal(num)}}/>
+          modal_open={this.state.edit_modal_open}
+          modal_title={this.state.modal_title}
+          modalClose={() => {this.handleModalClose()}}
+          submitGoal={(num) => {this.props.submitGoal(num)}}/>
         <AddIncome
-         modal_open={this.state.add_income_open}
-         modalClose={() => {this.handleModalClose()}}
-         submitIncome={(num) => {this.props.submitIncome(num)}} />
+          modal_open={this.state.add_income_open}
+          modalClose={() => {this.handleModalClose()}}
+          submitIncome={(num) => {this.props.submitIncome(num)}} />
         <AddSpend
           modal_open={this.state.add_spend_open}
           modalClose={() => {this.handleModalClose()}}

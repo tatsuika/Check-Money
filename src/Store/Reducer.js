@@ -1,11 +1,7 @@
 import * as Actions from './ActionsType.js';
 
 export const Reducer = (state = {test: 0, current: 0, goal: 0, current: 0, user_datas: [{date:"",income: 0, spends: [],result: 0}]}, action) => {
-  if (action.type === Actions.LOADED_DATAS){
-    return Object.assign({}, state, {
-      test: action.data,
-    });
-  }
+  //データ読み込み後の処理
   if (action.type === Actions.LOADED_GOAL_DATAS){
     return Object.assign({}, state, {
       goal: action.goal,
@@ -22,12 +18,13 @@ export const Reducer = (state = {test: 0, current: 0, goal: 0, current: 0, user_
       user_datas: action.user_datas,
     });
   }
+  //目標の変更後の処理
   if (action.type === Actions.LOADED_CHANGE_GOAL){
     return Object.assign({}, state, {
       goal: action.goal
     });
   }
-
+  //収入の追加後の処理
   if (action.type === Actions.LOADED_ADD_INCOME){
     let cp_user_datas = state.user_datas.slice();
     cp_user_datas[state.user_datas.length - 1].income = action.income;
@@ -37,7 +34,7 @@ export const Reducer = (state = {test: 0, current: 0, goal: 0, current: 0, user_
       user_datas: cp_user_datas,
     });
   }
-
+  //支出の追加後の処理
   if (action.type === Actions.LOADED_ADD_SPENDS){
     let cp_user_datas = state.user_datas.slice();
     console.log(action.spends);
@@ -48,7 +45,6 @@ export const Reducer = (state = {test: 0, current: 0, goal: 0, current: 0, user_
       user_datas: cp_user_datas,
     });
   }
-
   return state;
 }
 

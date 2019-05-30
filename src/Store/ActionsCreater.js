@@ -9,14 +9,8 @@ const today_s = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate(
 export const loadDatas = () => {
   return (dispatch) => {
     let load = async () => {
-      let first_scene_list = [];
       let user_goal = [];
       let user_data = [];
-      await Firebase.DB.collection("test").get().then((response) => {
-        response.forEach((doc) => {
-        const document = doc.data();
-        first_scene_list.push(document.tast_text);
-      })});
       await Firebase.DB.collection("UserState").get().then((response) => {
         response.forEach((doc) => {
         const document = doc.data();
@@ -40,12 +34,6 @@ export const loadDatas = () => {
         await Firebase.DB.collection("UserData").doc(today_s).set(new_data);
         user_data.push(new_data);
       }
-      /*
-      let test = await Firebase.DB.collection("UserData").doc('aaa').get().then((response) => {
-        return response.data()
-      });;
-      */
-      dispatch(loadedDatas(first_scene_list));
       dispatch(loadedGoalDatas(user_goal));
       dispatch(loadedUserDatas(user_data));
     }
@@ -53,12 +41,6 @@ export const loadDatas = () => {
   }
 }
 //データの初期化後の処理
-export const loadedDatas = (data) =>{
-  return {
-    type: ActionsType.LOADED_DATAS,
-    data: data,
-  }
-}
 export const loadedGoalDatas = (data) =>{
   let goal = data[0].goal;
   let current = data[0].current;

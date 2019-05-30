@@ -28,7 +28,6 @@ const styles = theme => ({
     overflow: "auto",
     backgroundColor: theme.palette.background.paper
   },
-
   list_root: {
     width: "90vw",
     maxWidth: "700px",
@@ -71,21 +70,22 @@ const makeList = (alist) =>{
           </ListItem>
         )
       default:
-        return 0
+        break;
   }})
   return (list)
 }
 
 const DisplayData = (props) => {
   const { classes } = props;
-  console.log(props.user_datas);
-  let data = (props.dialog_target >= 3) ? props.user_datas[props.user_datas.length - (props.dialog_target - 3 + 1)] :
-    props.user_datas[0];
-  let list_data = [[`収入: ${data.income}円`, -1]];
-  for(let i = 0; i < data.spends.length; i = i + 3){
-    let tag = data.spends[i + 1];
-    let s = [`支出: 金額=${data.spends[i + 2]}円, 使ったもの=${data.spends[i]}`, tag]
-    list_data.push(s);
+  let list_data = [];
+  if(props.dialog_target >= 3){
+    let data = props.user_datas[props.user_datas.length - (props.dialog_target - 3 + 1)];
+    list_data.push([`収入: ${data.income}円`, -1]);
+    for(let i = 0; i < data.spends.length; i = i + 3){
+      let tag = data.spends[i + 1];
+      let s = [`支出: 金額=${data.spends[i + 2]}円, 使ったもの=${data.spends[i]}`, tag]
+      list_data.push(s);
+    }
   }
   return (
     <div>
