@@ -69,7 +69,7 @@ const AddSpend = (props) => {
             margin="dense"
             id="name"
             label="使ったもの"
-            placeholder="数字を入力してください"
+            placeholder="数字のみ"
             fullWidth
             helperText
             error={false}
@@ -84,7 +84,7 @@ const AddSpend = (props) => {
             autoFocus
             margin="dense"
             id="name"
-            label="重要度"
+            label="分類"
             onChange={handleChange('tag')}
             value={values.tag} >
             {data.map(option => (
@@ -97,7 +97,7 @@ const AddSpend = (props) => {
             autoFocus
             margin="dense"
             id="name"
-            label="支出"
+            label="値段"
             placeholder="数字のみ"
             className={classes.textField_left}
             helperText
