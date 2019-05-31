@@ -146,9 +146,11 @@ export const loadDeleteSpends = (index, current, spends, result) =>{
       let new_index = (index - 1)*3;
       let cp_spends = spends.slice()
       spends.splice(new_index, 3);
+      console.log(cp_spends[new_index + 2])
+      console.log(result)
       await Firebase.DB.collection("UserData").doc(today_s).update({
         spends: spends,
-        result: result + spends[new_index + 2],
+        result: result + cp_spends[new_index + 2],
       });
       dispatch(loadedDeleteSpends(current + cp_spends[new_index + 2], spends, result + cp_spends[new_index + 2]));
     }
