@@ -1,5 +1,32 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Check-Money
+====
+
+Overview
+
+## このアプリについて
+今回製作した家計簿アプリでは、できるだけシンプルな家計簿を目指して製作しました。
+## できること
+このアプリでは、まず自分が貯金したい金額を設定できます。(一番上の貯金目標のエディットボタン)
+1日の収入が記録できます。(今日の収入出のプラスアイコン -> 収入の追加)
+1日の支出の詳細(使用したもの, 分類, 値段)が記録できます。(今日の収入出のマイナスアイコン -> 支出の追加)
+1日の収入, 支出を確認できます。(今日の収入出をタップ)
+収入出歴から、過去の収入, 支出を確認できます。(見たい日の収入出をタップ)
+## Usage
+
+## 今後やりたかったこと
+
+## Contribution
+
+## Licence
+
+[MIT](https://github.com/tcnksm/tool/blob/master/LICENCE)
+
+## Author
+
+[tcnksm](https://github.com/tcnksm)
+
 ## Available Scripts
 
 In the project directory, you can run:
