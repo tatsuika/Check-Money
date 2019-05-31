@@ -44,7 +44,6 @@ export const loadDatas = () => {
 export const loadedGoalDatas = (data) =>{
   let goal = data[0].goal;
   let current = data[0].current;
-  console.log(goal);
   return {
     type: ActionsType.LOADED_GOAL_DATAS,
     goal: goal,
@@ -140,8 +139,6 @@ export const loadedAddSpends = (num, spends, result) =>{
 //支出の削除
 export const loadDeleteSpends = (index, current, spends, result) =>{
   return (dispatch) => {
-    console.log(index);
-    console.log(spends[(index - 1)*3 + 2]);
     let deleteSpends = async () => {
       await Firebase.DB.collection("UserState").doc("j8bFzxsS7VMU7nb9dC7s").update({
 　　　　　current: current + spends[(index - 1)*3 + 2],
@@ -150,7 +147,6 @@ export const loadDeleteSpends = (index, current, spends, result) =>{
         spends: spends.slice().splice((index - 1)*3 + 3, 3),
         result: result + spends[(index - 1)*3 + 2],
       });
-      console.log(spends.slice().splice((index - 1)*3 + 3, 3));
       dispatch(loadedDeleteSpends(current + spends[(index - 1)*3 + 2], spends.slice().splice((index - 1)*3 + 3, 3), result + spends[(index - 1)*3 + 2]));
     }
     deleteSpends();

@@ -56,7 +56,6 @@ const AddSpend = (props) => {
   const handleChange = name => event => {
     setValues({ ...values, [name]: event.target.value });
   };
-  console.log(values);
   return (
     <div>
       <Dialog
