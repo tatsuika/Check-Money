@@ -140,14 +140,14 @@ export const loadedAddSpends = (num, spends, result) =>{
 export const loadDeleteSpends = (index, current, spends, result) =>{
   return (dispatch) => {
     let deleteSpends = async () => {
-      await Firebase.DB.collection("UserState").doc("j8bFzxsS7VMU7nb9dC7s").update({
-　　　　　current: current + spends[(index - 1)*3 + 2],
-      });
       let new_index = (index - 1)*3;
       let cp_spends = spends.slice()
       spends.splice(new_index, 3);
       console.log(cp_spends[new_index + 2])
       console.log(result)
+      await Firebase.DB.collection("UserState").doc("j8bFzxsS7VMU7nb9dC7s").update({
+　　　　　current: current + cp_spends[new_index + 2],
+      });
       await Firebase.DB.collection("UserData").doc(today_s).update({
         spends: spends,
         result: result + cp_spends[new_index + 2],
