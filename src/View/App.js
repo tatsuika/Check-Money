@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
 
-import { loadDatas, loadChangeGoal, loadAddIncome, loadAddSpends} from '../Store/ActionsCreater.js';
+import { loadDatas, loadChangeGoal, loadAddIncome, loadAddSpends, loadDeleteSpends} from '../Store/ActionsCreater.js';
 
 import Home from './Containers/Home.js'
 
@@ -27,6 +27,7 @@ class App extends Component{
           submitGoal={(num) => this.props.loadChangeGoal(num)}
           submitIncome={(num) => this.props.loadAddIncome(num, current, today_data.income, today_data.result)}
           submitSpend={(value) => this.props.loadAddSpends(value, current, today_data.spends, today_data.result)}
+          deleteSpends={(index) => this.props.loadDeleteSpends(index, current, today_data.spends, today_data.result)}
         />
       </div>
     );
@@ -36,5 +37,5 @@ class App extends Component{
 
 export default connect(
     state => ({ test: state.test, current: state.current, goal: state.goal, user_datas: state.user_datas}),
-    { loadDatas, loadChangeGoal, loadAddIncome, loadAddSpends}
+    { loadDatas, loadChangeGoal, loadAddIncome, loadAddSpends, loadDeleteSpends}
 )(App)
