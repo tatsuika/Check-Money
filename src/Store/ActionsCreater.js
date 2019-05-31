@@ -137,6 +137,40 @@ export const loadedAddSpends = (num, spends, result) =>{
   }
 }
 
+//支出の削除
+export const loadDeleteSpends = (index, current, spends, result) =>{
+  return (dispatch) => {
+    console.log(index);
+    console.log(spends[(index - 1)*3 + 2]);
+    let deleteSpends = async () => {
+      await Firebase.DB.collection("UserState").doc("j8bFzxsS7VMU7nb9dC7s").update({
+　　　　　current: current + spends[(index - 1)*3 + 2],
+      });
+      await Firebase.DB.collection("UserData").doc(today_s).update({
+        spends: spends.slice().splice((index - 1)*3 + 3, 3),
+        result: result + spends[(index - 1)*3 + 2],
+      });
+      console.log(spends.slice().splice((index - 1)*3 + 3, 3));
+      dispatch(loadedDeleteSpends(current + spends[(index - 1)*3 + 2], spends.slice().splice((index - 1)*3 + 3, 3), result + spends[(index - 1)*3 + 2]));
+    }
+    deleteSpends();
+  }
+}
+//支出の追加後の処理
+export const loadedDeleteSpends = (num, spends, result) =>{
+  return {
+    type: ActionsType.LOADED_DELETE_SPENDS,
+    current: num,
+    spends: spends,
+    result: result,
+  }
+}
+
+
+
+
+
+
 
 
 

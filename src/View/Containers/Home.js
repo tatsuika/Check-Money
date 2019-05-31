@@ -107,6 +107,7 @@ class Home extends Component{
           user_datas={this.props.user_datas}
           modal_open={this.state.display_data_open}
           dialog_target={this.state.dialog_target}
+          deleteSpends={(index) => this.props.deleteSpends(index)}
           modalClose={() => {this.handleModalClose()}} />
       </div>
     );

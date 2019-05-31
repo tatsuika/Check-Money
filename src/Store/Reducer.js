@@ -37,7 +37,16 @@ export const Reducer = (state = {test: 0, current: 0, goal: 0, current: 0, user_
   //支出の追加後の処理
   if (action.type === Actions.LOADED_ADD_SPENDS){
     let cp_user_datas = state.user_datas.slice();
-    console.log(action.spends);
+    cp_user_datas[state.user_datas.length - 1].spends = action.spends;
+    cp_user_datas[state.user_datas.length - 1].result = action.result;
+    return Object.assign({}, state, {
+      current: action.current,
+      user_datas: cp_user_datas,
+    });
+  }
+  //支出の削除後の処理
+  if (action.type === Actions.LOADED_DELETE_SPENDS){
+    let cp_user_datas = state.user_datas.slice();
     cp_user_datas[state.user_datas.length - 1].spends = action.spends;
     cp_user_datas[state.user_datas.length - 1].result = action.result;
     return Object.assign({}, state, {
