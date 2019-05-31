@@ -143,11 +143,14 @@ export const loadDeleteSpends = (index, current, spends, result) =>{
       await Firebase.DB.collection("UserState").doc("j8bFzxsS7VMU7nb9dC7s").update({
 　　　　　current: current + spends[(index - 1)*3 + 2],
       });
+      let new_index = (index - 1)*3;
+      let cp_spends = spends.slice()
+      spends.splice(new_index, 3);
       await Firebase.DB.collection("UserData").doc(today_s).update({
-        spends: spends.slice().splice((index - 1)*3 + 3, 3),
-        result: result + spends[(index - 1)*3 + 2],
+        spends: spends,
+        result: result + spends[new_index + 2],
       });
-      dispatch(loadedDeleteSpends(current + spends[(index - 1)*3 + 2], spends.slice().splice((index - 1)*3 + 3, 3), result + spends[(index - 1)*3 + 2]));
+      dispatch(loadedDeleteSpends(current + cp_spends[new_index + 2], spends, result + cp_spends[new_index + 2]));
     }
     deleteSpends();
   }
